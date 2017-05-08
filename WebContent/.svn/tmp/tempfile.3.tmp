@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+
+<h:body>
+
+<h:form>  
+	<p:panel id="panel" header="Giriş Yap" style="margin-bottom:10px;">  
+		<p:messages />  
+			<h:panelGrid columns="3">  
+			<h:outputLabel for="TC_Kimlik_No" value="* TC_Kimlik_No: " />  
+			<p:inputText id="TC_Kimlik_No" value="#{login.TC_Kimlik_No}" required="true" label="TC_Kimlik_No">  
+                <f:validateLength minimum="11" maximum="11" />  
+            </p:inputText>  
+            <p:message for="TC_Kimlik_No" />  
+              
+            <h:outputLabel for="sifre" value="* Sifre: " />  
+            <p:inputText id="sifre" value="#{login.sifre}" required="true" label="Sifre">
+            	<f:validateLength minimum="6" maximum="20" />  
+            </p:inputText>
+            <p:message for="sifre" />  
+        </h:panelGrid>  
+    </p:panel>  
+
+<<<<<<< .mine
+			<p:panel>
+			
+				<h:messages errorClass="error"/>
+				
+				<h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">
+				    <h:outputText value="TC Kimlik No			:  	     " /> <p:inputText required="true" label="" value="#{kayitBean.TC_Kimlik_No}" />
+					<h:outputText value="Adı         			:  	  	 " /> <p:inputText required="true" label="" value="#{kayitBean.adi}" />
+					<h:outputText value="Soyadı      			:  		 " /> <p:inputText required="true" label="" value="#{kayitBean.soyadi}" />
+					<h:outputText value="Cinsiyeti   			:  	     " /> <p:inputText required="true" label="" value="#{kayitBean.cinsiyet}" />
+					<h:outputText value="Kan Grubu   			:  	     " /> <p:inputText required="true" label="" value="#{kayitBean.kan_Grubu}" />
+					<h:outputText value="Doğum Tarihi			:  	     " /> <p:inputText required="true" label="" value="#{kayitBean.dogum_Tari}" />
+					<h:outputText value="Son Kan Verme Tarihi	:		 " /> <p:inputText required="true" label="" value="#{kayitBean.TC_Kimlik_No}" />
+					<h:outputText value="Adresi   				:  		 " /> <p:inputText required="true" label="" value="#{ayitBean.TC_Kimlik_No}" />
+					<h:outputText value="Şehir   				:  		 " /> <p:inputText required="true" label="" value="#{kKayitBean.TC_Kimlik_No}" />
+					<h:outputText value="İlçe   				:  		 " /> <p:inputText required="true" label="" value="#{kayitBean.TC_Kimlik_No}" />
+					<h:outputText value="Ev Telefon   			:  		 " /> <p:inputText required="true" label="" value="#{KayitBean.TC_Kimlik_No}" />
+					<h:outputText value="İş Telefon 			:  		 " /> <p:inputText required="true" label="" value="#{kayitBean.TC_Kimlik_No}" />
+					<h:outputText value="Cep Telefon			:  		 " /> <p:inputText required="true" label="" value="#{kayitBean.TC_Kimlik_No}" />
+					<h:outputText value="E-mail Adresi   		:  		 " /> <p:inputText required="true" label="" value="#{kayitBean.TC_Kimlik_No}" />
+					<h:outputText value="Şifre   				:  		 " /> <p:inputText required="true" label="" value="#{kayitBean.TC_Kimlik_No}" />
+				
+				</h:panelGrid>
+			</p:panel>
+			<p:commandButton value="Submit" update="growl" 
+							action="#{kayitBean.kayit}"/>
+		</p:tab>
+	 
+	
+=======
+	<p:commandButton value="Giriş" update="panel" actionListener="#{login.doLogin}" />
+>>>>>>> .r15
+</h:form>
+<<<<<<< .mine
+
+</h:body> -->
+
+<body> 
+  
+  <h:form id="loginForm">
+  
+    <p:growl id="growl" globalOnly="true"></p:growl>
+  
+    <p:panel header="Kan Bağışçısı Kayıt">
+    
+    <h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">
+				    <h:outputText value="TC Kimlik No			:  	     " /> <p:inputText required="true" label="" value="#{kayitBean.TC_Kimlik_No}" />
+					<h:outputText value="Adı         			:  	  	 " /> <p:inputText required="true" label="" value="#{kayitBean.adi}" />
+					<h:outputText value="Soyadı      			:  		 " /> <p:inputText required="true" label="" value="#{kayitBean.soyadi}" />
+					<h:outputText value="Cinsiyeti   			:  	     " /> <p:inputText required="true" label="" value="#{kayitBean.cinsiyet}" />
+					<h:outputText value="Kan Grubu   			:  	     " /> <p:inputText required="true" label="" value="#{kayitBean.kan_Grubu}" />
+					<h:outputText value="Doğum Tarihi			:  	     " /> <p:inputText required="true" label="" value="" />
+					<h:outputText value="Son Kan Verme Tarihi	:		 " /> <p:inputText required="true" label="" value="" />
+					<h:outputText value="Adresi   				:  		 " /> <p:inputText required="true" label="" value="" />
+					<h:outputText value="Şehir   				:  		 " /> <p:inputText required="true" label="" value="" />
+					<h:outputText value="İlçe   				:  		 " /> <p:inputText required="true" label="" value="" />
+					<h:outputText value="Ev Telefon   			:  		 " /> <p:inputText required="true" label="" value="" />
+					<h:outputText value="İş Telefon 			:  		 " /> <p:inputText required="true" label="" value="" />
+					<h:outputText value="Cep Telefon			:  		 " /> <p:inputText required="true" label="" value="" />
+					<h:outputText value="E-mail Adresi   		:  		 " /> <p:inputText required="true" label="" value="" />
+					<h:outputText value="Şifre   				:  		 " /> <p:inputText required="true" label="" value="" />
+					<h:outputText value="Şifre(tekrar) 			:  		 " /> <p:inputText required="true" label="" value="" />
+				</h:panelGrid>
+  
+      <h:panelGrid id="loginPanel" columns="2">
+      
+        <p:spacer></p:spacer>  		
+  		
+        <p:commandButton action="#{login.doLogin}" value="Kaydet" update="loginForm" ajax="true"></p:commandButton>
+  
+      </h:panelGrid>
+  
+    </p:panel>
+  
+  </h:form>
+
+					
+  
+</body>
+
+=======
+</h:body>
+>>>>>>> .r15
+</html>

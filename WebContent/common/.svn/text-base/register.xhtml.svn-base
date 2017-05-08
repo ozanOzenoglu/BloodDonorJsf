@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head>
+
+<h:body> 
+  
+<h:form id="registerForm">
+	<p:panel id="panel" header="Kan Bağışçısı Ekle" style="margin-bottom:10px;">
+		<p:messages />
+		<h:panelGrid columns="3">
+			<h:outputLabel for="TC_Kimlik_No" value="*TC Kimlik Numarası: " />
+			<p:inputText id="TC_Kimlik_No" 
+				value="#{register.TC_Kimlik_No}" required="true" label="TC Kimlik No">
+				<f:validateLength minimum="11" maximum="11"/>
+			</p:inputText>
+			<p:message for="TC_Kimlik_No" />
+			
+			<h:outputLabel for="sifre" value="*Şifre: " />
+			<p:password id="sifre" value="#{register.sifre}" feedback="false" required="true" label="Şifre">
+				<f:validateLength minimum="6" maximum="20"/>
+			</p:password>
+			<p:message for="sifre" />
+			
+			<h:outputLabel for="sifre_tekrar" value="*Şifre (Tekrar): " />
+			<p:password id="sifre_tekrar" value="#{register.sifre}" feedback="false" match="sifre" required="true" label="Şifre (Tekrar)">
+				<f:validateLength minimum="6" maximum="20"/>
+			</p:password>
+			<p:message for="sifre_tekrar" />			
+			
+			<h:outputLabel for="email" value="*E-Mail: " />
+			<p:inputText id="email" 
+				value="#{register.email}" required="true" label="E-Mail">
+				<f:validateLength maximum="40" />
+			</p:inputText>
+			<p:message for="email" />	
+			
+			<h:outputLabel for="adi" value="*Adı: " />
+			<p:inputText id="adi" 
+				value="#{register.adi}" required="true" label="Adı">
+				<f:validateLength maximum="20" />
+			</p:inputText>
+			<p:message for="adi" />
+			
+			<h:outputLabel for="soyadi" value="*Soyadı: " />
+			<p:inputText id="soyadi" 
+				value="#{register.soyadi}" required="true" label="Soyadı">
+				<f:validateLength maximum="20"/>
+			</p:inputText>
+			<p:message for="soyadi" />
+			
+			<h:outputLabel for="cinsiyeti" value="*Cinsiyeti: " />
+			<p:selectOneRadio id="cinsiyeti" value="#{register.cinsiyeti}" required="true" label="Cinsiyeti">
+				<f:selectItem itemLabel="Kadın" itemValue="K" />
+				<f:selectItem itemLabel="Erkek" itemValue="E" />
+			</p:selectOneRadio>
+			<p:message for="cinsiyeti" />
+			
+			<h:outputLabel for="kan_Grubu" value="*Kan Grubu: " />
+			<p:selectOneMenu id="kan_Grubu" value="#{register.kan_Grubu}" required="true" label="Kan Grubu">
+				<f:selectItem itemLabel="0 Rh+" itemValue="0+" />
+				<f:selectItem itemLabel="0 Rh-" itemValue="0-" />
+				<f:selectItem itemLabel="A Rh+" itemValue="A+" />
+				<f:selectItem itemLabel="A Rh-" itemValue="A-" />
+				<f:selectItem itemLabel="B Rh+" itemValue="B+" />
+				<f:selectItem itemLabel="B Rh-" itemValue="B-" />
+				<f:selectItem itemLabel="AB Rh+" itemValue="AB+" />
+				<f:selectItem itemLabel="AB Rh-" itemValue="AB-" />
+			</p:selectOneMenu>
+			<p:message for="kan_Grubu" />
+			
+			<h:outputLabel for="dogum_Tarihi" value="*Doğum Tarihi (gg-aa-yyyy): " />
+			<p:inputText id="dogum_Tarihi" value="#{register.dogum_Tarihi}" required="true" label="Doğum Tarihi">
+				<f:convertDateTime pattern="dd-MM-yyyy"/>
+			</p:inputText>
+			<p:message for="dogum_Tarihi" />
+			
+			<h:outputLabel for="son_Kan_Verme_Tarihi" value="Son Kan Verme Tarihi (gg-aa-yyyy): " />
+			<p:inputText id="son_Kan_Verme_Tarihi" value="#{register.son_Kan_Verme_Tarihi}" label="Son Kan Verme Tarihi">
+				<f:convertDateTime pattern="dd-MM-yyyy"/>
+			</p:inputText>
+			<p:message for="son_Kan_Verme_Tarihi" />
+			
+			<h:outputLabel for="adresi" value="Adresi: " />
+			<p:inputTextarea id="adresi" value="#{register.adresi}" style="width:250px;height:100px;" effectDuration="400" label="Adresi">
+				<f:validateLength maximum="150" />
+			</p:inputTextarea>
+			<p:message for="adresi" />		
+			
+			<h:outputLabel for="ilce" value="İlçe: " />
+			<p:inputText id="ilce" 
+				value="#{register.ilce}" label="İlçe">
+				<f:validateLength maximum="20" />
+			</p:inputText>
+			<p:message for="ilce" />	
+			
+			<h:outputLabel for="sehir" value="Şehir: " />
+			<p:inputText id="sehir" 
+				value="#{register.sehir}" label="Şehir">
+				<f:validateLength maximum="20" />
+			</p:inputText>
+			<p:message for="sehir" />	
+			
+			<h:outputLabel for="ev_Tel" value="Ev Telefonu (2125434343): " />
+			<p:inputText id="ev_Tel" 
+				value="#{register.ev_Tel}" label="Ev Telefonu">
+				<f:validateLength maximum="10" />
+			</p:inputText>
+			<p:message for="ev_Tel" />
+			
+			<h:outputLabel for="is_Tel" value="İş Telefonu (2125434343): " />
+			<p:inputText id="is_Tel" 
+				value="#{register.is_Tel}" label="İş Telefonu">
+				<f:validateLength maximum="10" />
+			</p:inputText>
+			<p:message for="is_Tel" />
+			
+			<h:outputLabel for="cep_Tel" value="Cep Telefonu (5xx5434343): " />
+			<p:inputText id="cep_Tel" 
+				value="#{register.cep_Tel}" label="Cep Telefonu">
+				<f:validateLength maximum="10" />
+			</p:inputText>
+			<p:message for="cep_Tel" />		
+			
+		</h:panelGrid>
+		<p:commandButton value="Kaydet" update="panel"
+			 actionListener="#{register.doRegister}" />
+	</p:panel>
+
+
+</h:form>
+  
+</h:body>
+
+</html>

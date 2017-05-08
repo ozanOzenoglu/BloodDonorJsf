@@ -1,0 +1,129 @@
+package org.kanbankasi.veritabani;
+
+import java.io.Serializable;
+import javax.persistence.*;
+
+
+/**
+ * The persistent class for the hastane database table.
+ * 
+ */
+@Entity
+public class Hastane implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column(name="\"Hastane_No\"")
+	private String hastane_No;
+
+	@Column(name="\"Adresi\"")
+	private String adresi;
+
+	@Column(name="\"Email\"")
+	private String email;
+
+	@Column(name="\"Fax\"")
+	private String fax;
+
+	@Column(name="\"Ilce\"")
+	private String ilce;
+
+	@Column(name="\"Kurum_Adi\"")
+	private String kurum_Adi;
+
+	@Column(name="\"Sehir\"")
+	private String sehir;
+
+	@Column(name="\"Sifre\"")
+	private String sifre;
+
+	@Column(name="\"Tel\"")
+	private String tel;
+
+	@Column(name="\"Tur\"")
+	private String tur;
+
+    public Hastane() {
+    }
+
+	public String getHastane_No() {
+		return this.hastane_No;
+	}
+
+	public void setHastane_No(String hastane_No) {
+		this.hastane_No = hastane_No;
+	}
+
+	public String getAdresi() {
+		return this.adresi;
+	}
+
+	public void setAdresi(String adresi) {
+		this.adresi = adresi;
+	}
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getFax() {
+		return this.fax;
+	}
+
+	public void setFax(String fax) {
+		this.fax = fax;
+	}
+
+	public String getIlce() {
+		return this.ilce;
+	}
+
+	public void setIlce(String ilce) {
+		this.ilce = ilce;
+	}
+
+	public String getKurum_Adi() {
+		return this.kurum_Adi;
+	}
+
+	public void setKurum_Adi(String kurum_Adi) {
+		this.kurum_Adi = kurum_Adi;
+	}
+
+	public String getSehir() {
+		return this.sehir;
+	}
+
+	public void setSehir(String sehir) {
+		this.sehir = sehir;
+	}
+
+	public String getSifre() {
+		return this.sifre;
+	}
+
+	public void setSifre(String sifre) {
+		this.sifre = sifre;
+	}
+
+	public String getTel() {
+		return this.tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	public String getTur() {
+		return this.tur;
+	}
+
+	public void setTur(String tur) {
+		this.tur = tur;
+	}
+
+}

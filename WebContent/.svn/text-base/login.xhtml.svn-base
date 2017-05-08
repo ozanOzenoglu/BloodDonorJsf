@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"> 
+
+<h:head></h:head>
+
+<h:body>
+	<center>
+		<h1>
+			<i>Kan Bağışçısı Kayıt</i>
+		</h1>
+	</center>
+<h:form>
+
+    <p:growl id="growl" sticky="true" showDetail="true"/>
+	<p:tab id="personal">
+
+			<p:panel>
+			
+				<h:messages errorClass="error"/>
+				
+				<h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">
+				    <h:outputText value="TC Kimlik No			:  	     " /> <p:inputText required="true" label="" value="#{KayitBean.TC_Kimlik_No}" />
+					<h:outputText value="Adı         			:  	  	 " /> <p:inputText required="true" label="" value="#{KayitBean.adi}" />
+					<h:outputText value="Soyadı      			:  		 " /> <p:inputText required="true" label="" value="#{KayitBean.soyadi}" />
+					<h:outputText value="Cinsiyeti   			:  	     " /> <p:inputText required="true" label="" value="#{KayitBean.cinsiyet}" />
+					<h:outputText value="Kan Grubu   			:  	     " /> <p:inputText required="true" label="" value="#{KayitBean.kan_Grubu}" />
+					<h:outputText value="Doğum Tarihi			:  	     " /> <p:inputText required="true" label="" value="#{KayitBean.dogum_Tari}" />
+					<h:outputText value="Son Kan Verme Tarihi	:		 " /> <p:inputText required="true" label="" value="#{KayitBean.TC_Kimlik_No}" />
+					<h:outputText value="Adresi   				:  		 " /> <p:inputText required="true" label="" value="#{KayitBean.TC_Kimlik_No}" />
+					<h:outputText value="Şehir   				:  		 " /> <p:inputText required="true" label="" value="#{KayitBean.TC_Kimlik_No}" />
+					<h:outputText value="İlçe   				:  		 " /> <p:inputText required="true" label="" value="#{KayitBean.TC_Kimlik_No}" />
+					<h:outputText value="Ev Telefon   			:  		 " /> <p:inputText required="true" label="" value="#{KayitBean.TC_Kimlik_No}" />
+					<h:outputText value="İş Telefon 			:  		 " /> <p:inputText required="true" label="" value="#{KayitBean.TC_Kimlik_No}" />
+					<h:outputText value="Cep Telefon			:  		 " /> <p:inputText required="true" label="" value="#{KayitBean.TC_Kimlik_No}" />
+					<h:outputText value="E-mail Adresi   		:  		 " /> <p:inputText required="true" label="" value="#{KayitBean.TC_Kimlik_No}" />
+					<h:outputText value="Şifre   				:  		 " /> <p:inputText required="true" label="" value="#{KayitBean.TC_Kimlik_No}" />
+				</h:panelGrid>
+			</p:panel>
+		</p:tab>
+	 
+	
+</h:form>
+
+</h:body>
+</html>

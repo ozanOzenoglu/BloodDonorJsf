@@ -1,0 +1,213 @@
+package org.kanbankasi.bean.common;
+
+import javax.faces.application.FacesMessage;
+import java.util.Date;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.kanbankasi.util.HibernateUtil;
+import org.kanbankasi.veritabani.KanBagiscisi;
+
+@ManagedBean(name = "register")
+@RequestScoped
+public class RegisterBean {
+
+	private String TC_Kimlik_No;
+	private String adi;
+	private String adresi;
+	private String cep_Tel;
+	private String cinsiyeti;
+	private Date dogum_Tarihi;
+	private String email;
+	private String ev_Tel;
+	private String ilce;
+	private String is_Tel;
+	private String kan_Grubu;
+	private Integer puan;
+	private String sehir;
+	private String sifre;
+	private Date son_Kan_Verme_Tarihi;
+	private String soyadi;
+    
+    public RegisterBean() {
+    }
+    
+    public String doRegister() {
+    	String redirect = null;
+    	Transaction tx = null;
+    	Session session = HibernateUtil.getSessionFactory().openSession();
+
+    	KanBagiscisi kb = new KanBagiscisi();
+    	kb.setAdi(this.getAdi());
+    	kb.setSoyadi(this.getSoyadi());
+    	kb.setAdresi(this.getAdresi());
+    	kb.setCep_Tel(this.getCep_Tel());
+    	kb.setCinsiyeti(this.getCinsiyeti());
+    	kb.setDogum_Tarihi(this.getDogum_Tarihi());
+    	kb.setEmail(this.getEmail());
+    	kb.setEv_Tel(this.getEv_Tel());
+    	kb.setIlce(this.getIlce());
+    	kb.setIs_Tel(this.getIs_Tel());
+    	kb.setKan_Grubu(this.getKan_Grubu());
+    	kb.setSehir(this.getSehir());
+    	kb.setSifre(this.getSifre());
+    	kb.setTC_Kimlik_No(this.getTC_Kimlik_No());
+
+    	try {
+    		tx = session.beginTransaction();
+    		session.save(kb);
+    		tx.commit();
+    		
+    		// kullanýcý sanki login olmuþ gibi session'ý bi yere kaydedilmeli:
+			// setUser(kb_list.get(0));
+    		
+			// bu redirect kullanýcýnýn anasayfasýna yönlendirmeli, (user_home.xhtml) gibi.
+    		redirect = "index.xhtml";
+    	} catch (Exception e) {
+    		if (tx != null) {
+    			tx.rollback();
+    			redirect = "register.xhtml";
+    			e.printStackTrace();
+    		}
+    	} finally {
+    		session.close();
+    	}
+    	
+    	FacesMessage message = null;
+    	message = new FacesMessage("user: " + getAdi() + " password: " + getSifre());
+    	FacesContext.getCurrentInstance().addMessage(null, message);
+    	return redirect;
+    }
+
+	public String getTC_Kimlik_No() {
+		return TC_Kimlik_No;
+	}
+
+	public void setTC_Kimlik_No(String tC_Kimlik_No) {
+		TC_Kimlik_No = tC_Kimlik_No;
+	}
+
+	public String getAdi() {
+		return adi;
+	}
+
+	public void setAdi(String adi) {
+		this.adi = adi;
+	}
+
+	public String getAdresi() {
+		return adresi;
+	}
+
+	public void setAdresi(String adresi) {
+		this.adresi = adresi;
+	}
+
+	public String getCep_Tel() {
+		return cep_Tel;
+	}
+
+	public void setCep_Tel(String cep_Tel) {
+		this.cep_Tel = cep_Tel;
+	}
+
+	public String getCinsiyeti() {
+		return cinsiyeti;
+	}
+
+	public void setCinsiyeti(String cinsiyeti) {
+		this.cinsiyeti = cinsiyeti;
+	}
+
+	public Date getDogum_Tarihi() {
+		return dogum_Tarihi;
+	}
+
+	public void setDogum_Tarihi(Date dogum_Tarihi) {
+		this.dogum_Tarihi = dogum_Tarihi;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getEv_Tel() {
+		return ev_Tel;
+	}
+
+	public void setEv_Tel(String ev_Tel) {
+		this.ev_Tel = ev_Tel;
+	}
+
+	public String getIlce() {
+		return ilce;
+	}
+
+	public void setIlce(String ilce) {
+		this.ilce = ilce;
+	}
+
+	public String getIs_Tel() {
+		return is_Tel;
+	}
+
+	public void setIs_Tel(String is_Tel) {
+		this.is_Tel = is_Tel;
+	}
+
+	public String getKan_Grubu() {
+		return kan_Grubu;
+	}
+
+	public void setKan_Grubu(String kan_Grubu) {
+		this.kan_Grubu = kan_Grubu;
+	}
+
+	public Integer getPuan() {
+		return puan;
+	}
+
+	public void setPuan(Integer puan) {
+		this.puan = puan;
+	}
+
+	public String getSehir() {
+		return sehir;
+	}
+
+	public void setSehir(String sehir) {
+		this.sehir = sehir;
+	}
+
+	public String getSifre() {
+		return sifre;
+	}
+
+	public void setSifre(String sifre) {
+		this.sifre = sifre;
+	}
+
+	public Date getSon_Kan_Verme_Tarihi() {
+		return son_Kan_Verme_Tarihi;
+	}
+
+	public void setSon_Kan_Verme_Tarihi(Date son_Kan_Verme_Tarihi) {
+		this.son_Kan_Verme_Tarihi = son_Kan_Verme_Tarihi;
+	}
+
+	public String getSoyadi() {
+		return soyadi;
+	}
+
+	public void setSoyadi(String soyadi) {
+		this.soyadi = soyadi;
+	}
+
+}

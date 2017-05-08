@@ -1,0 +1,63 @@
+package org.kanbankasi.veritabani;
+
+import java.io.Serializable;
+import javax.persistence.*;
+
+
+/**
+ * The persistent class for the kanduyurusu database table.
+ * 
+ */
+@Entity
+public class Kanduyurusu implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column(name="\"TC_Kimlik_No\"")
+	private String TC_Kimlik_No;
+
+	@Column(name="\"DuyuruMetni\"")
+	private String duyuruMetni;
+
+	@Column(name="\"KanGrubu\"")
+	private String kanGrubu;
+
+	@Column(name="\"Sehir\"")
+	private String sehir;
+
+    public Kanduyurusu() {
+    }
+
+	public String getTC_Kimlik_No() {
+		return this.TC_Kimlik_No;
+	}
+
+	public void setTC_Kimlik_No(String TC_Kimlik_No) {
+		this.TC_Kimlik_No = TC_Kimlik_No;
+	}
+
+	public String getDuyuruMetni() {
+		return this.duyuruMetni;
+	}
+
+	public void setDuyuruMetni(String duyuruMetni) {
+		this.duyuruMetni = duyuruMetni;
+	}
+
+	public String getKanGrubu() {
+		return this.kanGrubu;
+	}
+
+	public void setKanGrubu(String kanGrubu) {
+		this.kanGrubu = kanGrubu;
+	}
+
+	public String getSehir() {
+		return this.sehir;
+	}
+
+	public void setSehir(String sehir) {
+		this.sehir = sehir;
+	}
+
+}

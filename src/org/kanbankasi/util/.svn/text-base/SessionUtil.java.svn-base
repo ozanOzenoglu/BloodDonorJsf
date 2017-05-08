@@ -1,0 +1,38 @@
+package org.kanbankasi.util;
+
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+
+import org.kanbankasi.veritabani.Hastane;
+import org.kanbankasi.veritabani.KanBagiscisi;
+import org.kanbankasi.veritabani.SistemYoneticisi;
+
+public class SessionUtil {
+	
+	public static HttpSession getSessionFactory() {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		HttpSession httpsession = (HttpSession) fc.getExternalContext().getSession(false);
+		
+		if(httpsession == null)
+			httpsession = (HttpSession) fc.getExternalContext().getSession(true);
+		
+		return httpsession;
+	}
+	
+	public static void setObject(String attribute, Object object) {
+		getSessionFactory().setAttribute(attribute, object);
+	}
+	
+	public static KanBagiscisi getKBObject(String attribute) {
+		return (KanBagiscisi) getSessionFactory().getAttribute(attribute);
+	}
+	
+	public static Hastane getHObject(String attribute) {
+		return (Hastane) getSessionFactory().getAttribute(attribute);
+	}
+	
+	public static SistemYoneticisi getSYObject(String attribute) {
+		return (SistemYoneticisi) getSessionFactory().getAttribute(attribute);
+	}
+
+}

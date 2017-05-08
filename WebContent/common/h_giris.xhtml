@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html     xmlns="http://www.w3.org/1999/xhtml" xml:lang="tr" lang="tr"
+		  xmlns:h="http://java.sun.com/jsf/html"
+	      xmlns:f="http://java.sun.com/jsf/core"
+	      xmlns:ui="http://java.sun.com/jsf/facelets"
+	      xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="Robots" content="index,follow" />
+	<meta name="description" content="Description" />
+	<meta name="keywords" content="key, words" />
+	<link rel="stylesheet" type="text/css" href="css/screen.css" media="screen" />
+	<title>Kan Bağışı Merkezi Veritabanı ve Web Portalı </title>
+</h:head>
+<h:body>
+	<div id="content">
+		<p id="top">Kan bağışı hayat kurtarır.</p>
+		<div id="logo">
+			<h1><a href="index.html">KAN BANKASI</a></h1>
+		</div>
+	<div class="line"></div>	
+	
+			
+			<h:form> 
+			    	<p:menubar>
+				    	<p:menuitem value="Anasayfa" 						url="./index.xhtml"/> 					    	 
+					    <p:menuitem value="Acil Kan/Trombosit Duyuruları" 	url="./ak_duyuru.xhtml"/>  
+				    	<p:menuitem value="Kan Arama" 						url="./ak_kan_arama.xhtml" /> 
+					    <p:menuitem value="Trombosit Arama" 				url="./ak_trombosit_arama.xhtml" /> 					 
+					</p:menubar>  
+			</h:form>
+		
+		<div class="line"></div>
+		
+		<div id="pitch">
+			<h:form> 
+				<p:panel 
+						id="panel2"
+						header="Kayıt" 
+						style="margin-bottom:10px;">
+					<a href="./kb_kayit.xhtml">Hastane olarak üye olmak için lütfen sistem yöneticisi ile iletişime geçiniz.</a>
+						</p:panel> 
+					<p:panel 
+						id="panel"
+						header="Hastane Girişi" 
+						style="margin-bottom:10px;">
+						<h:panelGrid 
+							columns="3"> 
+							
+							
+						<h:outputLabel 
+						for="email" 
+						value="E-Mail:* " />
+						<p:inputText 
+						id="email" 
+						value="#{hastane.email}" 
+						required="true"
+						requiredMessage=" E-mail adresi boş olamaz. Lütfen geçerli bir e-mail adresi giriniz."  
+						label="E-Mail"
+						validatorMessage="Bu e-mail adresi geçersizdir. Lütfen kontrol ederek tekrar giriniz.">
+							<f:validateLength 
+							maximum="100" />
+							<f:validateRegex 
+							pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+					</p:inputText>
+					<p:message 
+						for="email" />
+							
+							
+						<h:outputLabel 
+							for="sifre" 
+							value="Sifre:*" /> 
+						<p:password 
+							id="sifre" 
+							value="#{hastane.sifre}" 							
+							feedback="false"
+							required="true"
+                        	requiredMessage=" Parola boş olamaz. Lütfen parolanızı giriniz."						 
+							label="Şifre"
+                        	validatorMessage="Şifre geçersizdir. Lütfen 6-20 karakter aralığında tekrar giriniz.">
+								<f:validateLength 
+								minimum="6" 
+								maximum="20"/>
+						</p:password>
+						<p:message 
+								for="sifre" /> 
+						<p:commandButton 
+							value="Giriş" 
+							action="#{hastane.doLogin}" 
+							ajax="false"/>
+							
+						</h:panelGrid> 
+					</p:panel> 
+					
+					
+					
+				</h:form>
+		</div>	
+	</div>
+</h:body>
+</html>

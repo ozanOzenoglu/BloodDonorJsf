@@ -1,0 +1,199 @@
+package org.kanbankasi.veritabani;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.Date;
+
+
+/**
+ * The persistent class for the kan_bagiscisi database table.
+ * 
+ */
+@Entity
+@Table(name="kan_bagiscisi")
+public class KanBagiscisi implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column(name="\"TC_Kimlik_No\"")
+	private String TC_Kimlik_No;
+
+	@Column(name="\"Adi\"")
+	private String adi;
+
+	@Column(name="\"Adresi\"")
+	private String adresi;
+
+	@Column(name="\"Cep_Tel\"")
+	private String cep_Tel;
+
+	@Column(name="\"Cinsiyeti\"")
+	private String cinsiyeti;
+
+    @Temporal( TemporalType.DATE)
+	@Column(name="\"Dogum_Tarihi\"")
+	private Date dogum_Tarihi;
+
+	@Column(name="\"Email\"")
+	private String email;
+
+	@Column(name="\"Ev_Tel\"")
+	private String ev_Tel;
+
+	@Column(name="\"Ilce\"")
+	private String ilce;
+
+	@Column(name="\"Is_Tel\"")
+	private String is_Tel;
+
+	@Column(name="\"Kan_Grubu\"")
+	private String kan_Grubu;
+
+	@Column(name="\"Puan\"")
+	private Integer puan;
+
+	@Column(name="\"Sehir\"")
+	private String sehir;
+
+	@Column(name="\"Sifre\"")
+	private String sifre;
+
+    @Temporal( TemporalType.DATE)
+	@Column(name="\"Son_Kan_Verme_Tarihi\"")
+	private Date son_Kan_Verme_Tarihi;
+
+	@Column(name="\"Soyadi\"")
+	private String soyadi;
+
+    public KanBagiscisi() {
+    }
+
+	public String getTC_Kimlik_No() {
+		return this.TC_Kimlik_No;
+	}
+
+	public void setTC_Kimlik_No(String TC_Kimlik_No) {
+		this.TC_Kimlik_No = TC_Kimlik_No;
+	}
+
+	public String getAdi() {
+		return this.adi;
+	}
+
+	public void setAdi(String adi) {
+		this.adi = adi;
+	}
+
+	public String getAdresi() {
+		return this.adresi;
+	}
+
+	public void setAdresi(String adresi) {
+		this.adresi = adresi;
+	}
+
+	public String getCep_Tel() {
+		return this.cep_Tel;
+	}
+
+	public void setCep_Tel(String cep_Tel) {
+		this.cep_Tel = cep_Tel;
+	}
+
+	public String getCinsiyeti() {
+		return this.cinsiyeti;
+	}
+
+	public void setCinsiyeti(String cinsiyeti) {
+		this.cinsiyeti = cinsiyeti;
+	}
+
+	public Date getDogum_Tarihi() {
+		return this.dogum_Tarihi;
+	}
+
+	public void setDogum_Tarihi(Date dogum_Tarihi) {
+		this.dogum_Tarihi = dogum_Tarihi;
+	}
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getEv_Tel() {
+		return this.ev_Tel;
+	}
+
+	public void setEv_Tel(String ev_Tel) {
+		this.ev_Tel = ev_Tel;
+	}
+
+	public String getIlce() {
+		return this.ilce;
+	}
+
+	public void setIlce(String ilce) {
+		this.ilce = ilce;
+	}
+
+	public String getIs_Tel() {
+		return this.is_Tel;
+	}
+
+	public void setIs_Tel(String is_Tel) {
+		this.is_Tel = is_Tel;
+	}
+
+	public String getKan_Grubu() {
+		return this.kan_Grubu;
+	}
+
+	public void setKan_Grubu(String kan_Grubu) {
+		this.kan_Grubu = kan_Grubu;
+	}
+
+	public Integer getPuan() {
+		return this.puan;
+	}
+
+	public void setPuan(Integer puan) {
+		this.puan = puan;
+	}
+
+	public String getSehir() {
+		return this.sehir;
+	}
+
+	public void setSehir(String sehir) {
+		this.sehir = sehir;
+	}
+
+	public String getSifre() {
+		return this.sifre;
+	}
+
+	public void setSifre(String sifre) {
+		this.sifre = sifre;
+	}
+
+	public Date getSon_Kan_Verme_Tarihi() {
+		return this.son_Kan_Verme_Tarihi;
+	}
+
+	public void setSon_Kan_Verme_Tarihi(Date son_Kan_Verme_Tarihi) {
+		this.son_Kan_Verme_Tarihi = son_Kan_Verme_Tarihi;
+	}
+
+	public String getSoyadi() {
+		return this.soyadi;
+	}
+
+	public void setSoyadi(String soyadi) {
+		this.soyadi = soyadi;
+	}
+
+}

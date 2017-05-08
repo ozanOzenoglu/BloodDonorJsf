@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html     xmlns="http://www.w3.org/1999/xhtml" xml:lang="tr" lang="tr"
+		  xmlns:h="http://java.sun.com/jsf/html"
+	      xmlns:f="http://java.sun.com/jsf/core"
+	      xmlns:ui="http://java.sun.com/jsf/facelets"
+	      xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="Robots" content="index,follow" />
+	<meta name="description" content="Description" />
+	<meta name="keywords" content="key, words" />
+	<link rel="stylesheet" type="text/css" href="css/screen.css" media="screen" />
+	<title>Kan Bağışı Merkezi Veritabanı ve Web Portalı </title>
+</h:head>
+<h:body>
+	<div id="content">
+		<p id="top">Kan bağışı hayat kurtarır.</p>
+		<div id="logo">
+			<h1><a href="index.html">KAN BANKASI</a></h1>
+		</div>
+		<div class="line"></div>	
+	
+			
+			
+			<h:form> 
+			    	<p:menubar>
+				    	<p:menuitem value="Anasayfa" 						url="./h_anasayfa.xhtml"/>
+					    <p:menuitem value="Acil Kan/Trombosit Duyuruları" 	url="./h_duyuru.xhtml"/>  
+				    	<p:menuitem value="Kan Arama" 						url="./h_detayli_kan_arama.xhtml" /> 
+					    <p:menuitem value="Trombosit Arama" 				url="./h_detayli_trombosit_arama.xhtml" /> 					 
+					    <p:menuitem value="Bilgilerimi Güncelle" 			url="./h_guncelle.xhtml"/> 
+				    	<p:menuitem value="Üyeliğimi Sil" 					url="./h_sil.xhtml"/>  
+				        <p:menuitem value="Çıkış" 							action="#{hastane.doLogout}"/>  
+					</p:menubar>  
+					
+			</h:form>				
+		
+		
+		<div id="pitch">
+			<h:form id="editForm">
+		
+			<f:event type="preRenderView" listener="#{hastane.doFillForm}"/>
+			
+			<p:panel id="panel" header="Hastane Bilgi Güncelleme" style="margin-bottom:10px;">
+				<p:messages />
+				
+				<h:panelGrid columns="3">
+
+					<h:outputLabel 
+						for="email" 
+						value="E-Mail:* " />
+					<p:inputText 
+						id="email" 
+						value="#{hastane.email}" 
+						required="true"
+						requiredMessage=" E-mail adresi boş olamaz. Lütfen geçerli bir e-mail adresi giriniz."  
+						label="E-Mail"
+						validatorMessage="Bu e-mail adresi geçersizdir. Lütfen kontrol ederek tekrar giriniz.">
+							<f:validateLength 
+							maximum="40" />
+							<f:validateRegex 
+							pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+					</p:inputText>
+					<p:message 
+						for="email" />	
+					
+					<h:outputLabel 
+						for="sifre" 
+						value="Şifre:* " />
+					<p:password 
+						id="sifre" 
+						value="#{hastane.sifre}" 
+						promptLabel="Lütfen şifre giriniz" 
+						weakLabel="Zayıf"  
+                        goodLabel="Orta seviye" 
+                        strongLabel="Güçlü"
+                        match="sifre" 
+						matchMessage=" Parola eşleşmiyor." 
+                        required="true" 
+                        requiredMessage=" Parola boş olamaz. Lütfen parolanızı giriniz."
+                        label="Şifre"
+                        validatorMessage="Şifre geçersizdir. Lütfen 6-20 karakter aralığında tekrar giriniz.">
+						<f:validateLength 
+							minimum="6"  
+							maximum="50"/>
+					</p:password>
+					<p:message 
+						for="sifre" />
+					
+					<h:outputLabel 
+						for="sifre_tekrar" 
+						value="Şifre (Tekrar):* " />
+					<p:password 
+						id="sifre_tekrar" 
+						value="#{hastane.sifre}" 
+						promptLabel="Lütfen şifrenizi tekrar giriniz" 
+						feedback="false" 						
+						required="true" 
+						requiredMessage=" Parola boş olamaz. Lütfen parolanızı giriniz."
+						label="Şifre (Tekrar)">
+							<f:validateLength 
+							minimum="6" 
+							maximum="50"/>
+					</p:password>
+					<p:message 
+						for="sifre_tekrar" />			
+					
+					
+					
+					<h:outputLabel 
+						for="kurum_Adi" 
+						value="Hastane Adi:* " />
+				   <p:inputText 
+						id="kurum_Adi" 
+						value="#{hastane.hastaneAdi}" 
+						required="true" 
+						requiredMessage=" Kurumadı Adı alanı boş olamaz. Lütfen kurum adını giriniz."  
+						label="Kurum Adi">
+						<f:validateLength 
+							maximum="50" />
+					</p:inputText>
+					<p:message 
+						for="kurum_Adi" /> 
+										
+						
+					
+					<h:outputLabel 
+						for="adresi" 
+						value="Adresi: " />
+					<p:inputTextarea 
+						id="adresi" 
+						value="#{hastane.adresi}" 
+						style="width:250px;height:100px;" 
+						effectDuration="400" 
+						label="Adresi">
+						<f:validateLength 
+							maximum="256" />
+					</p:inputTextarea>
+					<p:message 
+						for="adresi" />		
+					
+	
+						
+					<h:outputLabel 
+						for="sehir" 
+						value="Şehir: " />
+						<p:selectOneMenu     style="top:3px;" id="sehir" value="#{hastane.sehirNo}" effect="fade" >  
+					           
+					            <f:selectItems value="#{sehir.sehirList}" var="Sehir" itemLabel="#{Sehir.sehirAdi}" itemValue="#{Sehir.no}"/>  
+					    		
+					    </p:selectOneMenu> 
+					<p:message 
+						for="sehir" />	
+					
+					<h:outputLabel 
+						for="tel" 
+						value="Telefonu (2125434343): " />
+					<p:inputText 
+						id="tel" 
+						value="#{hastane.tel}" 
+						label="Telefonu">
+						<f:validateLength 
+							maximum="10" />
+					</p:inputText>
+					<p:message 
+						for="tel" />
+					
+					<h:outputLabel 
+						for="fax" 
+						value="Fax (2125434343): " />
+					<p:inputText 
+						id="fax" 
+						value="#{hastane.fax}" 
+						label="fax">
+						<f:validateLength 
+							maximum="10" />
+					</p:inputText>
+					<p:message 
+						for="fax" />					
+							
+				
+				<p:commandButton 
+					value="Kaydet" 
+					action="#{hastane.doEdit}" 
+					ajax="false"/>
+				</h:panelGrid>
+				
+			</p:panel>
+		</h:form>
+		</div>	
+	</div>
+</h:body>
+</html>

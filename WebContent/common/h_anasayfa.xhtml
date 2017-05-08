@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="tr" lang="tr"
+		xmlns:h="http://java.sun.com/jsf/html"
+	    xmlns:f="http://java.sun.com/jsf/core"
+	    xmlns:ui="http://java.sun.com/jsf/facelets"
+	    xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="Robots" content="index,follow" />
+	<meta name="description" content="Description" />
+	<meta name="keywords" content="key, words" />
+	<link rel="stylesheet" type="text/css" href="css/screen.css" media="screen" />
+	<title>Kan Bağışı Merkezi Veritabanı ve Web Portalı </title>
+
+</h:head>
+<h:body>
+
+	<div id="content">
+		<p id="top">Kan bağışı hayat kurtarır.</p>
+		
+		
+			
+		<div id="logo">
+			<h1><a href="index.html">KAN BANKASI</a></h1>
+		</div>
+		
+		<div class="line"></div>	
+	
+			
+			
+			<h:form> 
+			    	<p:menubar>
+				    	<p:menuitem value="Anasayfa" 						url="./h_anasayfa.xhtml"/>
+					    <p:menuitem value="Acil Kan/Trombosit Duyuruları" 	url="./h_duyuru.xhtml"/>  
+				    	<p:menuitem value="Kan Arama" 						url="./h_detayli_kan_arama.xhtml" /> 
+					    <p:menuitem value="Trombosit Arama" 				url="./h_detayli_trombosit_arama.xhtml" /> 					 
+					    <p:menuitem value="Bilgilerimi Güncelle" 			url="./h_guncelle.xhtml"/> 
+				    	<p:menuitem value="Üyeliğimi Sil" 					url="./h_sil.xhtml"/>  
+				        <p:menuitem value="Çıkış" 							action="#{hastane.doLogout}"/>  
+					</p:menubar> 
+					
+			</h:form>	
+		
+		
+		
+		  <div id="navigation"></div>		  
+			
+			<div class="line"></div>
+		<div class="third">
+			<h3>Neden Kan Bağışçısı Olmalıyız?</h3>
+			<p>Günümüzde tıp ve teknoloji alanındaki tüm gelişmelere rağmen kan, kan bileşenleri ve kandan elde edilen ürünlerin yerine geçebilecek bir tedavi aracı bulunamamıştır. Kan, kaynağı insan olan ve elde edilmesi için başka alternatifi olmayan bir tedavi aracıdır.</p>
+		</div>
+		<div class="third">
+			<h3>Neden trombosite ihtiyaç duyarız?</h3>
+			<p>Yüksek dozda kemoterapi tedavisi gören hastalar üç günde bir 8 ünite trombosite ihtiyaç duyabilmektedir. Lösemi hastalarının haftada 10-12 ünite trombosite ihtiyacı olabilmektedir. Kemik iliği nakli olan hastalar 120 ünite kadar trombosit kullanmaktadır.</p>
+		</div>
+		<div class="third last">
+			<h3>Neden Üye Olmalıyım?</h3>
+			<p>Kan yada Trombosit bağışlayarak hayat kurtarmak istiyorsanız iletişim bilgileriniz sayesinde hastaneler ve ihtiyaç sahipleri tarafından ulaşılabilmek için üye olmanız gerekmektedir. Üyelikle ilgili detaylı bilgi için lütfen tıklayın...</p>
+		</div>
+		<div class="line"></div>
+		<div class="left">
+			<h4>Join the Movement</h4>
+			<p><em>Laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</em></p>
+		</div>
+		<div class="right">
+			<h3>12 / 2009</h3>
+			<p>Duis rutrum dapibus diam. Sed turpis sem, suscipit et, ullamcorper vel, aliquam in, tellus. Phasellus interdum. Sed pede. Fusce semper tellus quis sapien.</p>
+			<br />
+			<h3>12 / 2009</h3>
+			<p>Duis rutrum dapibus diam. Sed turpis sem, suscipit et, ullamcorper vel, aliquam in, tellus. Phasellus interdum. Sed pede. Fusce semper tellus quis sapien.</p>
+		</div>
+		<div id="footer">
+			<p>HEMOGLOBIN - Mahmut Sami Çoktalaş - Ozan Özenoğlu - Emre Kağan Akkaya</p>
+			
+		</div>
+		
+	</div>
+		
+</h:body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html     xmlns="http://www.w3.org/1999/xhtml" xml:lang="tr" lang="tr"
+		  xmlns:h="http://java.sun.com/jsf/html"
+	      xmlns:f="http://java.sun.com/jsf/core"
+	      xmlns:ui="http://java.sun.com/jsf/facelets"
+	      xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="Robots" content="index,follow" />
+	<meta name="description" content="Description" />
+	<meta name="keywords" content="key, words" />
+	<link rel="stylesheet" type="text/css" href="css/screen.css" media="screen" />
+	<title>Kan Bağışı Merkezi Veritabanı ve Web Portalı </title>
+</h:head>
+<h:body>
+	<div id="content">
+		<p id="top">Kan bağışı hayat kurtarır.</p>
+		<div id="logo">
+			<h1><a href="index.html">KAN BANKASI</a></h1>
+		</div>
+		<div class="line"></div>	
+	
+			
+			<h:form> 
+			    	<p:menubar>
+				    	<p:menuitem value="Anasayfa" 						url="./index.xhtml"/> 					    	 
+				    	<p:menuitem value="Giriş/Kayıt" 					url="./kb_giris.xhtml" />  
+					    <p:menuitem value="Acil Kan/Trombosit Duyuruları" 	url="./ak_duyuru.xhtml"/>  
+				    	<p:menuitem value="Kan Arama" 						url="./ak_kan_arama.xhtml" /> 
+					    <p:menuitem value="Trombosit Arama" 				url="./ak_trombosit_arama.xhtml" /> 					 
+					</p:menubar>  
+			</h:form>
+		
+		
+		
+		<div id="footer">
+			 <h:form id="form"  >  
+  
+    <p:growl id="msgs" showDetail="true" />  
+  
+    <p:dataTable id="dataTable1"  var="kb" value="#{kullanici.uygunOlanlarList()}" widgetVar="kullanicilar" 
+				            emptyMessage="Bu kriterlerde bi sonuç yok"
+				            paginator="true" rows="10"
+                			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                			rowsPerPageTemplate="5,10,15,20,25,50,100"
+                			scrollable="true"  resizableColumns="false"
+                			>
+                			
+                			  <f:facet name="header">
+					            <p:outputPanel>
+					                <h:outputText value="Tüm alanlarda ara:" />
+					                <p:inputText id="globalFilter" onkeyup="kullanicilar.filter()" style="width:150px" />
+					            </p:outputPanel>
+					        </f:facet> 
+					        
+
+					        
+					        
+					        
+					            <p:column headerText="İletişime Geç" style="width:80px">  
+						             <h:panelGrid columns="3" styleClass="actions" cellpadding="2">  
+						                 <p:commandButton id="selectButton" update=":form:display" value="Mail" onclick="carDialog.show()" icon="ui-icon-search" title="View">  
+						                     <f:setPropertyActionListener value="#{kb}" target="#{kullanici.selectedKb}" />  
+						                 </p:commandButton>  
+						             </h:panelGrid>  
+						        </p:column>  
+					        
+					        
+					        	    
+					        
+  
+    						    <p:column sortBy="#{kb.adi}" style="width:100px" filterBy="#{kb.adi}" headerText="Adı" filterMatchMode="contains">
+					             <p:cellEditor>  
+					                <f:facet name="output">  
+					                    <h:outputText value="#{kb.adi}" />  
+					                </f:facet>  
+					                <f:facet name="input">  
+					                    <p:inputText value="#{kb.adi}" style="width:100%"/>  
+					                </f:facet>  
+					            </p:cellEditor>  
+					        </p:column> 	
+					         <p:column sortBy="#{kb.soyadi}" style="width:100px" filterBy="#{kb.soyadi}" headerText="Soyadı" filterMatchMode="contains">
+					             <p:cellEditor>  
+					                <f:facet name="output">  
+					                    <h:outputText value="#{kb.soyadi}" />  
+					                </f:facet>  
+					                <f:facet name="input">  
+					                    <p:inputText value="#{kb.soyadi}" style="width:100%"/>  
+					                </f:facet>  
+					            </p:cellEditor>  
+					        </p:column> 
+					        
+					         <p:column sortBy="#{kb.kanGrubu}" style="width:110px" filterBy="#{kb.kanGrubu}" headerText="Kan Grubu" filterMatchMode="contains">
+					             <p:cellEditor>  
+					                <f:facet name="output">  
+					                    <h:outputText value="#{kb.kanGrubu}" />  
+					                </f:facet>  
+					                <f:facet name="input">  
+					                    <p:inputText value="#{kb.kanGrubu}" style="width:100%"/>  
+					                </f:facet>  
+					            </p:cellEditor>  
+					        </p:column> 
+					        
+					        
+					        
+  							
+
+					        <p:column sortBy="#{sehir.sehirList.get(kb.sehirNo-1).sehirAdi}" style="width:100px" filterBy="#{sehir.sehirList.get(kb.sehirNo-1).sehirAdi}" headerText="Şehir" filterMatchMode="contains">
+					        	<p:cellEditor>
+					        		<f:facet name="output">
+					        			<h:outputText value="#{sehir.sehirList.get(kb.sehirNo-1).sehirAdi}"    />
+					        		</f:facet>
+					        		<f:facet name="input">
+					        		<p:selectOneMenu     style="top:3px;" id="sehir" value="#{kb.sehirNo}" effect="fade" >  
+					           			 <f:selectItems value="#{sehir.sehirList}" var="Sehir" itemLabel="#{Sehir.sehirAdi}" itemValue="#{Sehir.no}"/>  
+					    			 </p:selectOneMenu> 
+					        		</f:facet>
+					        	
+					        	</p:cellEditor>
+					        
+					        
+					        
+					        </p:column>
+					        
+
+					          
+		
+		
+					        
+					        
+					        
+					        
+			
+					        <p:column sortBy="#{kb.sonKanVermeTarihi}" style="width:170px" filterBy="#{kb.sonKanVermeTarihi}" headerText="Son Kan Verme Tarihi" filterMatchMode="contains">				        
+					        	<p:cellEditor>					        		
+					        		<f:facet name="output">
+					        			<h:outputText   value="#{kb.sonKanVermeTarihi}"  />
+					        		</f:facet>
+					        		<f:facet name="input">
+					        			<p:inputMask 
+											id="sonKanVermeTarihi" 
+											value="#{kb.sonKanVermeTarihi}"
+											label="Son Kan Verme Tarihi"
+											mask="99-99-9999">
+												<f:convertDateTime 
+												pattern="dd-MM-yyyy"/>
+										</p:inputMask>
+					        		</f:facet>
+					        	</p:cellEditor>
+					        </p:column>
+					        
+
+					        
+					          
+
+					         
+					       
+
+					        
+
+					          
+					         
+
+  
+        
+  
+    
+  
+    </p:dataTable>  
+  </h:form>
+		</div>	
+	</div>
+</h:body>
+</html>

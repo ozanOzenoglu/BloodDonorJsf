@@ -1,0 +1,77 @@
+package org.kanbankasi.bean.common;
+
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import org.kanbankasi.util.HibernateUtil;
+import org.kanbankasi.util.SessionUtil;
+import org.kanbankasi.veritabani.KanBagiscisi;
+
+
+@ManagedBean(name = "delete")
+@RequestScoped
+public class DeleteBean {
+	
+	private String sifre;
+	private String TC_Kimlik_No;
+	
+	@SuppressWarnings("unchecked")
+	public String doDelete() {
+		
+		String redirect = null;
+		Transaction tx = null;
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		
+		try {
+			tx = session.beginTransaction();
+			List<KanBagiscisi> kb_list = session.createQuery("delete from KanBagiscisi as kb where kb.TC_Kimlik_No='" 
+									+ this.getTC_Kimlik_No() + "' and kb.sifre = '" 
+									+ this.getSifre()).list();
+			//String deleteQuery = ;
+			//TODO burada kaldýn!!!!
+			//session.delete(kb_list[0]);
+			//Query query = session.createQuery(deleteQuery);
+			if(kb_list.size() == 0 || kb_list == null) {
+				redirect = "delete.xhtml";
+			}
+			else {
+				SessionUtil.setObject("online", null);
+				redirect = "index.xhtml";
+			}
+			//deðiþiklikleri uygula
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+				redirect = "delete.xhtml";
+				e.printStackTrace();
+			}
+		} finally {
+			session.close();
+		}
+		
+		return redirect;
+	}
+	
+	public String getSifre() {
+		return sifre;
+	}
+
+	public void setSifre(String sifre) {
+		this.sifre = sifre;
+	}
+
+	public String getTC_Kimlik_No() {
+		return TC_Kimlik_No;
+	}
+
+	public void setTC_Kimlik_No(String tC_Kimlik_No) {
+		TC_Kimlik_No = tC_Kimlik_No;
+	}
+}
